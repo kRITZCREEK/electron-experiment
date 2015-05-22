@@ -12,16 +12,16 @@ export var Clipboard = React.createClass({
     },
     searchPopup() {
         var remote = require('remote')
+        var url = window.location.href.replace('index', 'searchBar')
         var BrowserWindow = remote.require('browser-window')
         var win = new BrowserWindow({
             "width": 500,
-            "height": 200,
-            "skip-taskbar": true,
+            "height": 500,
+            "skip-taskbar": false,
             "always-on-top": true,
-            "frame": false
+            "frame": false,
+            "transparent": true
         })
-        var url = 'file://D:/Documents/Source/electron-experiment' + '/searchBar.html'
-        console.log('url', url)
         win.loadUrl(url)
         win.show()
     },
@@ -31,7 +31,7 @@ export var Clipboard = React.createClass({
             <main>
                 <ul>
                     {this.state.yanks.map(yank =>
-                        <Yank yank={yank} />)}
+                        <Yank key={yank.timestamp} yank={yank} />)}
                 </ul>
                 <button onClick={this.searchPopup}> Popup </button>
             </main>

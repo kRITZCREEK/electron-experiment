@@ -1,8 +1,9 @@
-var app = require('app');
-var clipboard = require('clipboard');
-var BrowserWindow = require('browser-window');
-var ipc = require('ipc');
-var globalShortcut = require('global-shortcut');
+var app = require('app')
+var clipboard = require('clipboard')
+var BrowserWindow = require('browser-window')
+var ipc = require('ipc')
+var globalShortcut = require('global-shortcut')
+var path = require('path')
 
 
 function getNewYank(){
@@ -12,10 +13,14 @@ function getNewYank(){
   }
 }
 
-app.commandLine.appendSwitch('remote-debugging-port', '8315');
+app.commandLine.appendSwitch('remote-debugging-port', '8315')
 
 app.on('ready', function () {
-
+  var mainWindow = new BrowserWindow(
+    {
+      width: 800,
+      height: 700
+    })
 
   var ret = globalShortcut.register('ctrl+shift+c', function() {
       yanks.push(getNewYank())
@@ -24,11 +29,5 @@ app.on('ready', function () {
 
   var yanks = ['Hi']
 
-  mainWindow = new BrowserWindow(
-    {
-      width: 800,
-      height: 700
-      }
-    )
-  mainWindow.loadUrl('file://' + __dirname + '/index.html')
+  mainWindow.loadUrl(path.join('file://', __dirname, '/index.html'))
 })

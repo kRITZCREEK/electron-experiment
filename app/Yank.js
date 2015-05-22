@@ -4,7 +4,7 @@ export var Yank = React.createClass({
     render() {
         var style = {
             float: "right"
-        };
+        }
         return (
             <div>
                 <div> {this.props.yank.content} </div>
