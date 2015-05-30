@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron . --enable-transparent-visuals --disable-gpu",
-    "test": "webpack"
+    "test": "webpack --watch"
   },
   "author": "",
   "license": "ISC",

@@ -25,7 +25,7 @@ export var Searchbar = React.createClass({
           <button onClick={this.refresh}>refresh</button>
           <hr />
           <ul>
-            {this.state.matches.map(y => <li> {y} </li>)}
+            {this.state.matches.map((y, i) => <li key={i}> {y} </li>)}
           </ul>
         </div>
       )
